@@ -1,0 +1,121 @@
+[
+  {
+    "_id": "sys-schema_definition",
+    "_$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "数据模型定义",
+    "description": "定义模型信息",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "模型名称",
+        "description": "模型名称，限制4-32字符长度",
+        "minLength": 4,
+        "maxLength": 32
+      },
+      "nameSpace": {
+        "type": "string",
+        "title": "模型命名空间",
+        "description": "模型命名空间，限制6-32字符长度，符合[{prefix}-{modelName}]格式",
+        "minLength": 6,
+        "maxLength": 32,
+        "pattern": "^[a-z]{1,}[a-z0-9-_]*[a-z0-9-]{1,}$"
+      },
+      "version": {
+        "type": "string",
+        "title": "版本号",
+        "description": "版本号描述信息，符合[v{数字}]格式",
+        "minLength": 2,
+        "maxLength": 4,
+        "pattern": "v\\d+$"
+      },
+      "modelType": {
+        "type": "string",
+        "title": "模型类型",
+        "enum": [
+          "SystemData",
+          "MajorData",
+          "FormData",
+          "ProcessData",
+          "ResultData",
+          "ConfigData",
+          "OpData",
+          "MappingData"
+        ]
+      },
+      "modelClass": {
+        "type": "integer",
+        "title": "模型可见级别",
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "dataLevel": {
+        "type": "integer",
+        "title": "数据权限等级",
+        "enum": [
+          "System",
+          "Tenant",
+          "Project"
+        ]
+      },
+      "description": {
+        "type": "string",
+        "title": "模型描述",
+        "maxLength": 512
+      },
+      "orgId": {
+        "type": "string",
+        "title": "模型所属组织",
+        "maxLength": 32
+      },
+      "orgPath": {
+        "type": "string",
+        "title": "模式所属组织路径",
+        "maxLength": 128
+      },
+      "schema": {
+        "type": "object",
+        "title": "模型属性schema",
+        "description": "模型包含的元数据列表，描述每个属性的定义。json schema格式"
+      },
+      "isIssued": {
+        "title": "发布状态",
+        "type": "boolean",
+        "default": false
+      },
+      "_creator": {
+        "type": "string",
+        "title": "创建用户"
+      },
+      "_createdTime": {
+        "type": "object",
+        "format": "date-time",
+        "title": "创建时间"
+      },
+      "_updater": {
+        "type": "string",
+        "title": "更新用户"
+      },
+      "_updatedTime": {
+        "type": "object",
+        "format": "date-time",
+        "title": "修改时间"
+      }
+    },
+    "required": [
+      "name",
+      "nameSpace",
+      "modelType",
+      "modelClass",
+      "dataLevel",
+      "orgId",
+      "orgPath",
+      "schema"
+    ],
+    "id": "http://schema-store/gss-datahub-prod/sys-schema_definition#"
+  }
+]
