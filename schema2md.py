@@ -11,8 +11,8 @@ with open(filename + '.md', 'w+') as f:
         if dpt == 0:
             f.write('\n# {}、 {}({})\n'.format(num, it["title"], it['_id']))
             f.write('- 简要描述: {}\n'.format(it['description']))
-            f.write('- 访问方式: Restful API\n')
-            f.write('- 数据格式: json\n')
+            # f.write('- 访问方式: Restful API\n')
+            # f.write('- 数据格式: json\n')
             f.write('\n| 参数名      | 类型   | 说明    |\n')
             f.write('| :---        | :---   | :---    |\n')
         elif it['type'] in ('object', 'array'):
